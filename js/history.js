@@ -15,5 +15,14 @@ $(function () {
 		history.pushState('', $this.text, href);
 	});
 
+	//FUNCTION TO HANDLE THE BROWSERS BACK AND FORWARD BUTTONS
+	window.onpopstate = function() {
+		var path = location.pathname;
+		loadContent(path);
+		var page = path.substring(location.pathname.lastIndexOf('/') + 1);
+		$('a').removeClass('current');
+		$('[href="' + page + '"]').addClass('current');
+	};
+
 
 });
